@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.citichma.mapper.ProductPlanMapper" >
+  <resultMap id="BaseResultMap" type="com.citichma.pojo.ProductPlan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="work_sn" property="workSn" jdbcType="VARCHAR" />
+    <result column="contract_sn" property="contractSn" jdbcType="VARCHAR" />
+    <result column="chart_sn" property="chartSn" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_num" property="productNum" jdbcType="INTEGER" />
+    <result column="delivery_date" property="deliveryDate" jdbcType="TIMESTAMP" />
+    <result column="trycar_date" property="trycarDate" jdbcType="TIMESTAMP" />
+    <result column="product_type" property="productType" jdbcType="TINYINT" />
+    <result column="order_company" property="orderCompany" jdbcType="TINYINT" />
+    <result column="order_user" property="orderUser" jdbcType="VARCHAR" />
+    <result column="designer" property="designer" jdbcType="VARCHAR" />
+    <result column="design_company" property="designCompany" jdbcType="INTEGER" />
+    <result column="organizer" property="organizer" jdbcType="VARCHAR" />
+    <result column="approver" property="approver" jdbcType="VARCHAR" />
+    <result column="order_date" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="adjust_deliver_date" property="adjustDeliverDate" jdbcType="TIMESTAMP" />
+    <result column="project_leader" property="projectLeader" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="TINYINT" />
+    <result column="importance_degree" property="importanceDegree" jdbcType="INTEGER" />
+    <result column="cupboard_num" property="cupboardNum" jdbcType="INTEGER" />
+    <result column="box_num" property="boxNum" jdbcType="INTEGER" />
+    <result column="project_status" property="projectStatus" jdbcType="TINYINT" />
+    <result column="zfj_finish_date" property="zfjFinishDate" jdbcType="TIMESTAMP" />
+    <result column="zfj_finish_num" property="zfjFinishNum" jdbcType="INTEGER" />
+    <result column="zfj_num" property="zfjNum" jdbcType="INTEGER" />
+    <result column="out_date" property="outDate" jdbcType="TIMESTAMP" />
+    <result column="delivery_report" property="deliveryReport" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_id" property="createId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_modify_time" property="lastModifyTime" jdbcType="TIMESTAMP" />
+    <result column="modify_id" property="modifyId" jdbcType="INTEGER" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!-- 生产计划详情 -->
+   <resultMap id="detailResultMap" type="com.citichma.common.vo.ProductPlanDetailVo" extends="BaseResultMap">
+   	<collection property="timeNodeList" 
+    		 column="id" select="com.citichma.mapper.TimeNodeMapper.findTimeNodeByPlanId">
+    </collection>
+    <collection property="fileList" 
+    		 column="id" select="com.citichma.mapper.FileUploadMapper.findFileByPlanId">
+    </collection>
+   </resultMap>
+  
+ <!--  带时间节点的生产计划 -->
+  <resultMap id="detailNodeResultMap" type="com.citichma.common.vo.ProductPlanWithTimeNode" extends="BaseResultMap">
+   	<collection property="timeNodeList" 
+    		 column="id" select="com.citichma.mapper.TimeNodeMapper.findTimeNodeByPlanId">
+    </collection>
+   </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, work_sn, contract_sn, chart_sn, product_name, product_num, delivery_date, trycar_date, 
+    product_type, order_company, order_user, designer, design_company, organizer, approver, 
+    order_date, adjust_deliver_date, project_leader, order_type, importance_degree, cupboard_num, 
+    box_num, project_status, zfj_finish_date, zfj_finish_num, zfj_num, out_date, delivery_report, 
+    remark1, remark2, remark3, remark4, remark, create_id, create_time, last_modify_time, 
+    modify_id, is_del
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.citichma.pojo.ProductPlanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_product_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product_plan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  
+  <select id="countNumByStatusAndDate" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product_plan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+   
+  <!-- 查询生产计划详情信息 -->
+  <select id="findProductPlanDetailById" resultMap="detailResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product_plan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!-- 查询所有生产计划带时间节点  -->
+  <select id="findProductPlanWithNodeAll" resultMap="detailNodeResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product_plan
+    where is_del = 0
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_product_plan
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.citichma.pojo.ProductPlanExample" >
+    delete from t_product_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.citichma.pojo.ProductPlan" >
+	<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+  		select LAST_INSERT_ID()
+  	</selectKey>
+    insert into t_product_plan (id, work_sn, contract_sn, 
+      chart_sn, product_name, product_num, 
+      delivery_date, trycar_date, product_type, 
+      order_company, order_user, designer, 
+      design_company, organizer, approver, 
+      order_date, adjust_deliver_date, project_leader, 
+      order_type, importance_degree, cupboard_num, 
+      box_num, project_status, zfj_finish_date, 
+      zfj_finish_num, zfj_num, out_date, 
+      delivery_report, remark1, remark2, 
+      remark3, remark4, remark, 
+      create_id, create_time, last_modify_time, 
+      modify_id, is_del)
+    values (#{id,jdbcType=INTEGER}, #{workSn,jdbcType=VARCHAR}, #{contractSn,jdbcType=VARCHAR}, 
+      #{chartSn,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{productNum,jdbcType=INTEGER}, 
+      #{deliveryDate,jdbcType=TIMESTAMP}, #{trycarDate,jdbcType=TIMESTAMP}, #{productType,jdbcType=TINYINT}, 
+      #{orderCompany,jdbcType=TINYINT}, #{orderUser,jdbcType=VARCHAR}, #{designer,jdbcType=VARCHAR}, 
+      #{designCompany,jdbcType=INTEGER}, #{organizer,jdbcType=VARCHAR}, #{approver,jdbcType=VARCHAR}, 
+      #{orderDate,jdbcType=TIMESTAMP}, #{adjustDeliverDate,jdbcType=TIMESTAMP}, #{projectLeader,jdbcType=VARCHAR}, 
+      #{orderType,jdbcType=TINYINT}, #{importanceDegree,jdbcType=INTEGER}, #{cupboardNum,jdbcType=INTEGER}, 
+      #{boxNum,jdbcType=INTEGER}, #{projectStatus,jdbcType=TINYINT}, #{zfjFinishDate,jdbcType=TIMESTAMP}, 
+      #{zfjFinishNum,jdbcType=INTEGER}, #{zfjNum,jdbcType=INTEGER}, #{outDate,jdbcType=TIMESTAMP}, 
+      #{deliveryReport,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, 
+      #{modifyId,jdbcType=INTEGER}, #{isDel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.citichma.pojo.ProductPlan" >
+	<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+  		select LAST_INSERT_ID()
+  	</selectKey>
+    insert into t_product_plan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="workSn != null" >
+        work_sn,
+      </if>
+      <if test="contractSn != null" >
+        contract_sn,
+      </if>
+      <if test="chartSn != null" >
+        chart_sn,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="productNum != null" >
+        product_num,
+      </if>
+      <if test="deliveryDate != null" >
+        delivery_date,
+      </if>
+      <if test="trycarDate != null" >
+        trycar_date,
+      </if>
+      <if test="productType != null" >
+        product_type,
+      </if>
+      <if test="orderCompany != null" >
+        order_company,
+      </if>
+      <if test="orderUser != null" >
+        order_user,
+      </if>
+      <if test="designer != null" >
+        designer,
+      </if>
+      <if test="designCompany != null" >
+        design_company,
+      </if>
+      <if test="organizer != null" >
+        organizer,
+      </if>
+      <if test="approver != null" >
+        approver,
+      </if>
+      <if test="orderDate != null" >
+        order_date,
+      </if>
+      <if test="adjustDeliverDate != null" >
+        adjust_deliver_date,
+      </if>
+      <if test="projectLeader != null" >
+        project_leader,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="importanceDegree != null" >
+        importance_degree,
+      </if>
+      <if test="cupboardNum != null" >
+        cupboard_num,
+      </if>
+      <if test="boxNum != null" >
+        box_num,
+      </if>
+      <if test="projectStatus != null" >
+        project_status,
+      </if>
+      <if test="zfjFinishDate != null" >
+        zfj_finish_date,
+      </if>
+      <if test="zfjFinishNum != null" >
+        zfj_finish_num,
+      </if>
+      <if test="zfjNum != null" >
+        zfj_num,
+      </if>
+      <if test="outDate != null" >
+        out_date,
+      </if>
+      <if test="deliveryReport != null" >
+        delivery_report,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastModifyTime != null" >
+        last_modify_time,
+      </if>
+      <if test="modifyId != null" >
+        modify_id,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="workSn != null" >
+        #{workSn,jdbcType=VARCHAR},
+      </if>
+      <if test="contractSn != null" >
+        #{contractSn,jdbcType=VARCHAR},
+      </if>
+      <if test="chartSn != null" >
+        #{chartSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null" >
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryDate != null" >
+        #{deliveryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trycarDate != null" >
+        #{trycarDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productType != null" >
+        #{productType,jdbcType=TINYINT},
+      </if>
+      <if test="orderCompany != null" >
+        #{orderCompany,jdbcType=TINYINT},
+      </if>
+      <if test="orderUser != null" >
+        #{orderUser,jdbcType=VARCHAR},
+      </if>
+      <if test="designer != null" >
+        #{designer,jdbcType=VARCHAR},
+      </if>
+      <if test="designCompany != null" >
+        #{designCompany,jdbcType=INTEGER},
+      </if>
+      <if test="organizer != null" >
+        #{organizer,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null" >
+        #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adjustDeliverDate != null" >
+        #{adjustDeliverDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectLeader != null" >
+        #{projectLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=TINYINT},
+      </if>
+      <if test="importanceDegree != null" >
+        #{importanceDegree,jdbcType=INTEGER},
+      </if>
+      <if test="cupboardNum != null" >
+        #{cupboardNum,jdbcType=INTEGER},
+      </if>
+      <if test="boxNum != null" >
+        #{boxNum,jdbcType=INTEGER},
+      </if>
+      <if test="projectStatus != null" >
+        #{projectStatus,jdbcType=TINYINT},
+      </if>
+      <if test="zfjFinishDate != null" >
+        #{zfjFinishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zfjFinishNum != null" >
+        #{zfjFinishNum,jdbcType=INTEGER},
+      </if>
+      <if test="zfjNum != null" >
+        #{zfjNum,jdbcType=INTEGER},
+      </if>
+      <if test="outDate != null" >
+        #{outDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryReport != null" >
+        #{deliveryReport,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null" >
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyId != null" >
+        #{modifyId,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.citichma.pojo.ProductPlanExample" resultType="java.lang.Integer" >
+    select count(*) from t_product_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_product_plan
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.workSn != null" >
+        work_sn = #{record.workSn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contractSn != null" >
+        contract_sn = #{record.contractSn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chartSn != null" >
+        chart_sn = #{record.chartSn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productName != null" >
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productNum != null" >
+        product_num = #{record.productNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.deliveryDate != null" >
+        delivery_date = #{record.deliveryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.trycarDate != null" >
+        trycar_date = #{record.trycarDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.productType != null" >
+        product_type = #{record.productType,jdbcType=TINYINT},
+      </if>
+      <if test="record.orderCompany != null" >
+        order_company = #{record.orderCompany,jdbcType=TINYINT},
+      </if>
+      <if test="record.orderUser != null" >
+        order_user = #{record.orderUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.designer != null" >
+        designer = #{record.designer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.designCompany != null" >
+        design_company = #{record.designCompany,jdbcType=INTEGER},
+      </if>
+      <if test="record.organizer != null" >
+        organizer = #{record.organizer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approver != null" >
+        approver = #{record.approver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderDate != null" >
+        order_date = #{record.orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.adjustDeliverDate != null" >
+        adjust_deliver_date = #{record.adjustDeliverDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.projectLeader != null" >
+        project_leader = #{record.projectLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderType != null" >
+        order_type = #{record.orderType,jdbcType=TINYINT},
+      </if>
+      <if test="record.importanceDegree != null" >
+        importance_degree = #{record.importanceDegree,jdbcType=INTEGER},
+      </if>
+      <if test="record.cupboardNum != null" >
+        cupboard_num = #{record.cupboardNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.boxNum != null" >
+        box_num = #{record.boxNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectStatus != null" >
+        project_status = #{record.projectStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.zfjFinishDate != null" >
+        zfj_finish_date = #{record.zfjFinishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zfjFinishNum != null" >
+        zfj_finish_num = #{record.zfjFinishNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.zfjNum != null" >
+        zfj_num = #{record.zfjNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.outDate != null" >
+        out_date = #{record.outDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deliveryReport != null" >
+        delivery_report = #{record.deliveryReport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark1 != null" >
+        remark1 = #{record.remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark2 != null" >
+        remark2 = #{record.remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark3 != null" >
+        remark3 = #{record.remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark4 != null" >
+        remark4 = #{record.remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createId != null" >
+        create_id = #{record.createId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastModifyTime != null" >
+        last_modify_time = #{record.lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyId != null" >
+        modify_id = #{record.modifyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDel != null" >
+        is_del = #{record.isDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_product_plan
+    set id = #{record.id,jdbcType=INTEGER},
+      work_sn = #{record.workSn,jdbcType=VARCHAR},
+      contract_sn = #{record.contractSn,jdbcType=VARCHAR},
+      chart_sn = #{record.chartSn,jdbcType=VARCHAR},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      product_num = #{record.productNum,jdbcType=INTEGER},
+      delivery_date = #{record.deliveryDate,jdbcType=TIMESTAMP},
+      trycar_date = #{record.trycarDate,jdbcType=TIMESTAMP},
+      product_type = #{record.productType,jdbcType=TINYINT},
+      order_company = #{record.orderCompany,jdbcType=TINYINT},
+      order_user = #{record.orderUser,jdbcType=VARCHAR},
+      designer = #{record.designer,jdbcType=VARCHAR},
+      design_company = #{record.designCompany,jdbcType=INTEGER},
+      organizer = #{record.organizer,jdbcType=VARCHAR},
+      approver = #{record.approver,jdbcType=VARCHAR},
+      order_date = #{record.orderDate,jdbcType=TIMESTAMP},
+      adjust_deliver_date = #{record.adjustDeliverDate,jdbcType=TIMESTAMP},
+      project_leader = #{record.projectLeader,jdbcType=VARCHAR},
+      order_type = #{record.orderType,jdbcType=TINYINT},
+      importance_degree = #{record.importanceDegree,jdbcType=INTEGER},
+      cupboard_num = #{record.cupboardNum,jdbcType=INTEGER},
+      box_num = #{record.boxNum,jdbcType=INTEGER},
+      project_status = #{record.projectStatus,jdbcType=TINYINT},
+      zfj_finish_date = #{record.zfjFinishDate,jdbcType=TIMESTAMP},
+      zfj_finish_num = #{record.zfjFinishNum,jdbcType=INTEGER},
+      zfj_num = #{record.zfjNum,jdbcType=INTEGER},
+      out_date = #{record.outDate,jdbcType=TIMESTAMP},
+      delivery_report = #{record.deliveryReport,jdbcType=VARCHAR},
+      remark1 = #{record.remark1,jdbcType=VARCHAR},
+      remark2 = #{record.remark2,jdbcType=VARCHAR},
+      remark3 = #{record.remark3,jdbcType=VARCHAR},
+      remark4 = #{record.remark4,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_id = #{record.createId,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      last_modify_time = #{record.lastModifyTime,jdbcType=TIMESTAMP},
+      modify_id = #{record.modifyId,jdbcType=INTEGER},
+      is_del = #{record.isDel,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.citichma.pojo.ProductPlan" >
+    update t_product_plan
+    <set >
+      <if test="workSn != null" >
+        work_sn = #{workSn,jdbcType=VARCHAR},
+      </if>
+      <if test="contractSn != null" >
+        contract_sn = #{contractSn,jdbcType=VARCHAR},
+      </if>
+      <if test="chartSn != null" >
+        chart_sn = #{chartSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null" >
+        product_num = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryDate != null" >
+        delivery_date = #{deliveryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trycarDate != null" >
+        trycar_date = #{trycarDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productType != null" >
+        product_type = #{productType,jdbcType=TINYINT},
+      </if>
+      <if test="orderCompany != null" >
+        order_company = #{orderCompany,jdbcType=TINYINT},
+      </if>
+      <if test="orderUser != null" >
+        order_user = #{orderUser,jdbcType=VARCHAR},
+      </if>
+      <if test="designer != null" >
+        designer = #{designer,jdbcType=VARCHAR},
+      </if>
+      <if test="designCompany != null" >
+        design_company = #{designCompany,jdbcType=INTEGER},
+      </if>
+      <if test="organizer != null" >
+        organizer = #{organizer,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null" >
+        approver = #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        order_date = #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adjustDeliverDate != null" >
+        adjust_deliver_date = #{adjustDeliverDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectLeader != null" >
+        project_leader = #{projectLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=TINYINT},
+      </if>
+      <if test="importanceDegree != null" >
+        importance_degree = #{importanceDegree,jdbcType=INTEGER},
+      </if>
+      <if test="cupboardNum != null" >
+        cupboard_num = #{cupboardNum,jdbcType=INTEGER},
+      </if>
+      <if test="boxNum != null" >
+        box_num = #{boxNum,jdbcType=INTEGER},
+      </if>
+      <if test="projectStatus != null" >
+        project_status = #{projectStatus,jdbcType=TINYINT},
+      </if>
+      <if test="zfjFinishDate != null" >
+        zfj_finish_date = #{zfjFinishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zfjFinishNum != null" >
+        zfj_finish_num = #{zfjFinishNum,jdbcType=INTEGER},
+      </if>
+      <if test="zfjNum != null" >
+        zfj_num = #{zfjNum,jdbcType=INTEGER},
+      </if>
+      <if test="outDate != null" >
+        out_date = #{outDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryReport != null" >
+        delivery_report = #{deliveryReport,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null" >
+        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyId != null" >
+        modify_id = #{modifyId,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.citichma.pojo.ProductPlan" >
+    update t_product_plan
+    set work_sn = #{workSn,jdbcType=VARCHAR},
+      contract_sn = #{contractSn,jdbcType=VARCHAR},
+      chart_sn = #{chartSn,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_num = #{productNum,jdbcType=INTEGER},
+      delivery_date = #{deliveryDate,jdbcType=TIMESTAMP},
+      trycar_date = #{trycarDate,jdbcType=TIMESTAMP},
+      product_type = #{productType,jdbcType=TINYINT},
+      order_company = #{orderCompany,jdbcType=TINYINT},
+      order_user = #{orderUser,jdbcType=VARCHAR},
+      designer = #{designer,jdbcType=VARCHAR},
+      design_company = #{designCompany,jdbcType=INTEGER},
+      organizer = #{organizer,jdbcType=VARCHAR},
+      approver = #{approver,jdbcType=VARCHAR},
+      order_date = #{orderDate,jdbcType=TIMESTAMP},
+      adjust_deliver_date = #{adjustDeliverDate,jdbcType=TIMESTAMP},
+      project_leader = #{projectLeader,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=TINYINT},
+      importance_degree = #{importanceDegree,jdbcType=INTEGER},
+      cupboard_num = #{cupboardNum,jdbcType=INTEGER},
+      box_num = #{boxNum,jdbcType=INTEGER},
+      project_status = #{projectStatus,jdbcType=TINYINT},
+      zfj_finish_date = #{zfjFinishDate,jdbcType=TIMESTAMP},
+      zfj_finish_num = #{zfjFinishNum,jdbcType=INTEGER},
+      zfj_num = #{zfjNum,jdbcType=INTEGER},
+      out_date = #{outDate,jdbcType=TIMESTAMP},
+      delivery_report = #{deliveryReport,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark4 = #{remark4,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      modify_id = #{modifyId,jdbcType=INTEGER},
+      is_del = #{isDel,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
