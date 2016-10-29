@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>自动化生产管理系统-用户列表</title>
+<title>高端电液基地生产管理系统-用户列表</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="${basePath }/resources/css/style.css" media="all" />
 <link rel="stylesheet" type="text/css" href="${basePath }/resources/css/easyui/easyui.css" media="all" />

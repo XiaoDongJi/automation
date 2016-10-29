@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>自动化生产管理系统-新增生产计划</title>
+<title>高端电液基地生产管理系统-新增生产计划</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="${basePath }/resources/css/style.css" />
 <link rel="stylesheet" type="text/css" href="${basePath }/resources/css/easyui/easyui.css"/>
@@ -54,22 +54,22 @@
 		    		</caption>
 		    		<tr>
 		    			<td>工作令号:</td>
-		    			<td><input class="easyui-textbox" type="text" name="workSn" data-options="required:true"></input></td>
+		    			<td><input class="easyui-textbox" type="text" name="workSn" data-options="required:true"/></td>
 		    			
 		    			<td>合同号:</td>
-		    			<td><input class="easyui-textbox" type="text" name="contractSn"></input></td>
+		    			<td><input class="easyui-textbox" type="text" name="contractSn"/></td>
 		    			
 		    			<td>产品图号:</td>
-		    			<td><input class="easyui-textbox" type="text" name="chartSn"></input></td>
+		    			<td><input class="easyui-textbox" type="text" name="chartSn"/></td>
 		    			
 		    			<td>产品名称及规格:</td>
-		    			<td><input class="easyui-textbox" type="text" name="productName"></input></td>
+		    			<td><input class="easyui-textbox" type="text" name="productName"/></td>
 		    		</tr>
 		    		<tr>
 		    			<td>数量:</td>
-		    			<td><input class="easyui-textbox" type="text" name="productNum"></input></td>
+		    			<td><input class="easyui-textbox" type="text" name="productNum"/></td>
 		    			<td>合同交货期:</td>
-		    			<td><input class="easyui-datebox" type="text" name="deliveryDate"></input></td>
+		    			<td><input class="easyui-datebox" type="text" name="deliveryDate"/></td>
 		    			
 		    			<td>产品种类:</td>
 		    			<td>
@@ -113,10 +113,10 @@
 		    		</tr>
 		    		<tr>
 		    			<td>用户:</td>
-		    			<td><input class="easyui-textbox" type="text" name="orderUser"></input></td>
+		    			<td><input class="easyui-textbox" type="text" name="orderUser"/></td>
 		    			
 		    			<td>设计:</td>
-		    			<td><input class="easyui-textbox" type="text" name="designer"></input></td>
+		    			<td><input class="easyui-textbox" type="text" name="designer"/></td>
 		    			
 		    			<td>设计部门:</td>
 		    			<td>
@@ -143,7 +143,7 @@
 		    			</td>
 		    			
 		    			<td>下令日期:</td>
-		    			<td><input class="easyui-datebox" type="text" name="orderDate"></input></td>
+		    			<td><input class="easyui-datebox" type="text" name="orderDate"/></td>
 		    			
 		    			<td>类别:</td>
 		    			<td>
@@ -160,12 +160,12 @@
 		    			</td>
 		    			
 		    			<td>调整交货期:</td>
-		    			<td><input class="easyui-datebox" type="text" name="adjustDeliverDate"></input></td>
+		    			<td><input class="easyui-datebox" type="text" name="adjustDeliverDate"/></td>
 		    			
 		    		</tr>
 		    		<tr>
 		    			<td>试车节点:</td>
-		    			<td><input class="easyui-datebox" type="text" name="trycarDate"></input></td>
+		    			<td><input class="easyui-datebox" type="text" name="trycarDate"/></td>
 		    			
 		    			<td>重要程度:</td>
 		    			<td>
@@ -177,15 +177,15 @@
 		    			</td>
 		    			
 		    			<td>柜数:</td>
-		    			<td><input class="easyui-numberbox" maxlength="3" type="text" name="cupboardNum" value="0" data-options="min:0,max:1000,precision:0"></input></td></td>
+		    			<td><input class="easyui-numberbox" maxlength="3" type="text" name="cupboardNum" value="1" data-options="min:0,max:1000,precision:0"/></td></td>
 		    			
 		    			<td>箱数:</td>
-		    			<td><input class="easyui-numberbox" maxlength="3" type="text" name="boxNum" value="0" data-options="min:0,max:1000,precision:0"></input></td></td>
+		    			<td><input class="easyui-numberbox" maxlength="3" type="text" name="boxNum" value="1" data-options="min:0,max:1000,precision:0"/></td></td>
 		    			
 		    		</tr>
 		    		<tr>
 		    			<td>项目人:</td>
-		    			<td><input class="easyui-textbox" type="text" name="projectLeader"></input></td>
+		    			<td><input class="easyui-textbox" type="text" name="projectLeader"/></td>
 		    			<td>状态:</td>
 		    			<td>
 		    				<select class="easyui-combobox" name="projectStatus" style="width: 145px;">
@@ -226,59 +226,59 @@
 		    		<tbody>
 		    			<tr>
 		    				<td>采购元件节点</td>
-		    				<td><input type="hidden" id="cgyjId" name="cgyj.id" /><input type="hidden" name="cgyj.nodeType" value="1" /><input class="easyui-datebox" type="text" name="cgyj.planFinishTime"></input></td>
-		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="cgyj.planDayNum" data-options="min:0,max:1000,precision:0"></input></td>
-		    				<td><input class="easyui-datebox" type="text" name="cgyj.actualFinishTime"></input></td>
-		    				<td><input class="easyui-textbox" type="text" name="cgyj.nodeLeader"></input></td>
-		    				<td><input class="easyui-textbox" name="cgyj.remark" data-options="multiline:true" style="height:50px;width: 100%;"></input></td>
+		    				<td><input type="hidden" id="cgyjId" name="cgyj.id" /><input type="hidden" name="cgyj.nodeType" value="1" /><input class="easyui-datebox" type="text" name="cgyj.planFinishTime"/></td>
+		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="cgyj.planDayNum" data-options="min:0,max:1000,precision:0"/></td>
+		    				<td><input class="easyui-datebox" type="text" name="cgyj.actualFinishTime"/></td>
+		    				<td><input class="easyui-textbox" type="text" name="cgyj.nodeLeader"/></td>
+		    				<td><input class="easyui-textbox" name="cgyj.remark" data-options="multiline:true" style="height:50px;width: 100%;"/></td>
 		    			</tr>
 		    			<tr>
 		    				<td>采购柜体节点</td>
-		    				<td><input type="hidden" id="cggtId" name="cggt.id" /><input type="hidden" name="cggt.nodeType" value="2" /><input class="easyui-datebox" type="text" name="cggt.planFinishTime"></input></td>
-		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="cggt.planDayNum" data-options="min:0,max:1000,precision:0"></input></td>
-		    				<td><input class="easyui-datebox" type="text" name="cggt.actualFinishTime"></input></td>
-		    				<td><input class="easyui-textbox" type="text" name="cggt.nodeLeader"></input></td>
-		    				<td><input class="easyui-textbox" name="cggt.remark" data-options="multiline:true" style="height:50px;width: 100%;"></input></td>
+		    				<td><input type="hidden" id="cggtId" name="cggt.id" /><input type="hidden" name="cggt.nodeType" value="2" /><input class="easyui-datebox" type="text" name="cggt.planFinishTime"/></td>
+		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="cggt.planDayNum" data-options="min:0,max:1000,precision:0"/></td>
+		    				<td><input class="easyui-datebox" type="text" name="cggt.actualFinishTime"/></td>
+		    				<td><input class="easyui-textbox" type="text" name="cggt.nodeLeader"/></td>
+		    				<td><input class="easyui-textbox" name="cggt.remark" data-options="multiline:true" style="height:50px;width: 100%;"/></td>
 		    			</tr>
 		    			<tr>
 		    				<td>元件发放</td>
-		    				<td><input type="hidden" id="yjffId" name="yjff.id" /><input type="hidden" name="yjff.nodeType" value="3" /><input class="easyui-datebox" type="text" name="yjff.planFinishTime"></input></td>
-		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="yjff.planDayNum" data-options="min:0,max:1000,precision:0"></input></td>
-		    				<td><input class="easyui-datebox" type="text" name="yjff.actualFinishTime"></input></td>
-		    				<td><input class="easyui-textbox" type="text" name="yjff.nodeLeader"></input></td>
-		    				<td><input class="easyui-textbox" name="yjff.remark" data-options="multiline:true" style="height:50px;width: 100%;"></input></td>
+		    				<td><input type="hidden" id="yjffId" name="yjff.id" /><input type="hidden" name="yjff.nodeType" value="3" /><input class="easyui-datebox" type="text" name="yjff.planFinishTime"/></td>
+		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="yjff.planDayNum" data-options="min:0,max:1000,precision:0"/></td>
+		    				<td><input class="easyui-datebox" type="text" name="yjff.actualFinishTime"/></td>
+		    				<td><input class="easyui-textbox" type="text" name="yjff.nodeLeader"/></td>
+		    				<td><input class="easyui-textbox" name="yjff.remark" data-options="multiline:true" style="height:50px;width: 100%;"/></td>
 		    			</tr>
 		    			<tr>
 		    				<td>装配节点</td>
-		    				<td><input type="hidden" id="zpId" name="zp.id" /><input type="hidden" name="zp.nodeType" value="4" /><input class="easyui-datebox" type="text" name="zp.planFinishTime"></input></td>
-		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="zp.planDayNum"  data-options="min:0,max:1000,precision:0"></input></td>
-		    				<td><input class="easyui-datebox" type="text" name="zp.actualFinishTime"></input></td>
-		    				<td><input class="easyui-textbox" type="text" name="zp.nodeLeader"></input></td>
-		    				<td><input class="easyui-textbox" name="zp.remark" data-options="multiline:true" style="height:50px;width: 100%;"></input></td>
+		    				<td><input type="hidden" id="zpId" name="zp.id" /><input type="hidden" name="zp.nodeType" value="4" /><input class="easyui-datebox" type="text" name="zp.planFinishTime"/></td>
+		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="zp.planDayNum"  data-options="min:0,max:1000,precision:0"/></td>
+		    				<td><input class="easyui-datebox" type="text" name="zp.actualFinishTime"/></td>
+		    				<td><input class="easyui-textbox" type="text" name="zp.nodeLeader"/></td>
+		    				<td><input class="easyui-textbox" name="zp.remark" data-options="multiline:true" style="height:50px;width: 100%;"/></td>
 		    			</tr>
 		    			<tr>
 		    				<td>检验节点</td>
-		    				<td><input type="hidden" id="jyId" name="jy.id" /><input type="hidden" name="jy.nodeType" value="5" /><input class="easyui-datebox" type="text" name="jy.planFinishTime"></input></td>
-		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="jy.planDayNum"  data-options="min:0,max:1000,precision:0"></input></td>
-		    				<td><input class="easyui-datebox" type="text" name="jy.actualFinishTime"></input></td>
-		    				<td><input class="easyui-textbox" type="text" name="jy.nodeLeader"></input></td>
-		    				<td><input class="easyui-textbox" name="jy.remark" data-options="multiline:true" style="height:50px;width: 100%;"></input></td>
+		    				<td><input type="hidden" id="jyId" name="jy.id" /><input type="hidden" name="jy.nodeType" value="5" /><input class="easyui-datebox" type="text" name="jy.planFinishTime"/></td>
+		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="jy.planDayNum"  data-options="min:0,max:1000,precision:0"/></td>
+		    				<td><input class="easyui-datebox" type="text" name="jy.actualFinishTime"/></td>
+		    				<td><input class="easyui-textbox" type="text" name="jy.nodeLeader"/></td>
+		    				<td><input class="easyui-textbox" name="jy.remark" data-options="multiline:true" style="height:50px;width: 100%;"/></td>
 		    			</tr>
 		    			<tr>
 		    				<td>调试节点</td>
-		    				<td><input type="hidden" id="tsId" name="ts.id" /><input type="hidden" name="ts.nodeType" value="6" /><input class="easyui-datebox" type="text" name="ts.planFinishTime"></input></td>
-		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="ts.planDayNum"  data-options="min:0,max:1000,precision:0"></input></td>
-		    				<td><input class="easyui-datebox" type="text" name="ts.actualFinishTime"></input></td>
-		    				<td><input class="easyui-textbox" type="text" name="ts.nodeLeader"></input></td>
-		    				<td><input class="easyui-textbox" name="ts.remark" data-options="multiline:true" style="height:50px;width: 100%;"></input></td>
+		    				<td><input type="hidden" id="tsId" name="ts.id" /><input type="hidden" name="ts.nodeType" value="6" /><input class="easyui-datebox" type="text" name="ts.planFinishTime"/></td>
+		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="ts.planDayNum"  data-options="min:0,max:1000,precision:0"/></td>
+		    				<td><input class="easyui-datebox" type="text" name="ts.actualFinishTime"/></td>
+		    				<td><input class="easyui-textbox" type="text" name="ts.nodeLeader"/></td>
+		    				<td><input class="easyui-textbox" name="ts.remark" data-options="multiline:true" style="height:50px;width: 100%;"/></td>
 		    			</tr>
 		    			<tr>
 		    				<td>包装入库节点</td>
-		    				<td><input type="hidden" id="rkId" name="rk.id" /><input type="hidden" name="rk.nodeType" value="7" /><input class="easyui-datebox" type="text" name="rk.planFinishTime"></input></td>
-		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="rk.planDayNum" data-options="min:0,max:1000,precision:0"></input></td>
-		    				<td><input class="easyui-datebox" type="text" name="rk.actualFinishTime"></input></td>
-		    				<td><input class="easyui-textbox" type="text" name="rk.nodeLeader"></input></td>
-		    				<td><input class="easyui-textbox" name="rk.remark" data-options="multiline:true" style="height:50px;width: 100%;"></input></td>
+		    				<td><input type="hidden" id="rkId" name="rk.id" /><input type="hidden" name="rk.nodeType" value="7" /><input class="easyui-datebox" type="text" name="rk.planFinishTime"/></td>
+		    				<td><input class="easyui-numberbox" maxlength="3" type="text" name="rk.planDayNum" data-options="min:0,max:1000,precision:0"/></td>
+		    				<td><input class="easyui-datebox" type="text" name="rk.actualFinishTime"/></td>
+		    				<td><input class="easyui-textbox" type="text" name="rk.nodeLeader"/></td>
+		    				<td><input class="easyui-textbox" name="rk.remark" data-options="multiline:true" style="height:50px;width: 100%;"/></td>
 		    			</tr>
 		    			
 		    			<tr>
@@ -292,40 +292,40 @@
 		    	<table class="tb_last" style="width: 93%;margin-top: 40px;">
 	    			<tr>
 	    				<td>出库时间</td>
-	    				<td><input class="easyui-datebox" type="text" name="outDate"></input></td>
+	    				<td><input class="easyui-datebox" type="text" name="outDate"/></td>
 	    				<td>直发件数量</td>
-	    				<td><input type="text" class="easyui-numberbox" name="zfjNum"/></td>
+	    				<td><input type="text" class="easyui-numberbox" name="zfjNum" value="1"/></td>
 	    				
 	    				<td>直发件已完成数量</td>
-	    				<td><input type="text" class="easyui-numberbox" name="zfjFinishNum"/></td>
+	    				<td><input type="text" class="easyui-numberbox" name="zfjFinishNum" value="1"/></td>
 	    				
 	    				<td>直发件最终完成日期</td>
-	    				<td><input class="easyui-datebox" type="text" name="zfjFinishDate"></input></td>
+	    				<td><input class="easyui-datebox" type="text" name="zfjFinishDate"/></td>
 	    				<td></td>
 	    			</tr>
 	    			<tr>
 	    				<td>发货报告</td>
-	    				<td colspan="2"><input class="easyui-textbox" name="deliveryReport" data-options="multiline:true" style="height:100px;width: 80%;"></input></td>
+	    				<td colspan="2"><input class="easyui-textbox" name="deliveryReport" data-options="multiline:true" style="height:100px;width: 80%;"/></td>
 	    				
 	    				<td>详细进度1</td>
 	    				<td colspan="2">
-	    					<input class="easyui-textbox" name="remark1" data-options="multiline:true" style="height:100px;width: 80%;" ></input>
+	    					<input class="easyui-textbox" name="remark1" data-options="multiline:true" style="height:100px;width: 80%;" />
 	    				</td>
 	    				<td>详细进度2</td>
 	    				<td colspan="2">
-	    					<input class="easyui-textbox" name="remark2" data-options="multiline:true" style="height:100px;width: 80%;"></input>
+	    					<input class="easyui-textbox" name="remark2" data-options="multiline:true" style="height:100px;width: 80%;"/>
 	    				</td>
 	    			</tr>
 	    			<tr>
 	    				<td>详情进度3</td>
-	    				<td colspan="2"><input class="easyui-textbox" name="remark3" data-options="multiline:true" style="height:100px;width: 80%;"></input></td>
+	    				<td colspan="2"><input class="easyui-textbox" name="remark3" data-options="multiline:true" style="height:100px;width: 80%;"/></td>
 	    				<td>详细进度4</td>
 	    				<td colspan="2">
-	    					<input class="easyui-textbox" name="remark4" data-options="multiline:true" style="height:100px;width: 80%;"></input>
+	    					<input class="easyui-textbox" name="remark4" data-options="multiline:true" style="height:100px;width: 80%;"/>
 	    				</td>
 	    				<td>详细进度5</td>
 	    				<td colspan="2">
-	    					<input class="easyui-textbox" name="remark" data-options="multiline:true" style="height:100px;width: 80%;"></input>
+	    					<input class="easyui-textbox" name="remark" data-options="multiline:true" style="height:100px;width: 80%;"/>
 	    				</td>
 	    			</tr>
 		    	</table>

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="auth" uri="http://www.citichmc.com/"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>自动化生产管理系统-用户列表</title>
+<title>高端电液基地生产管理系统-用户列表</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="${basePath }/resources/css/style.css" />
 <link rel="stylesheet" type="text/css" href="${basePath }/resources/css/easyui/easyui.css" />
@@ -56,7 +57,7 @@
 							pagination:true,
 							rownumbers:10,
 							pageNumber:1,
-							onDblClickRow:dbclickRow
+							onDblClickRow:dbclickRow,
 							pageSize:10">
 			<thead>
 				<tr>
@@ -129,7 +130,7 @@
 			<a href="javascript:;" id="searchBtn" class="easyui-linkbutton" iconCls="icon-search">查找</a>
     	</form>
 	</div>
-	
+	<input type="hidden" id="hasButton" value="${button}"/>
  	<script type="text/javascript" src="${basePath }/resources/js/jquery.min.js"></script>
 	<script type="text/javascript" src="${basePath }/resources/js/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="${basePath }/resources/js/easyui-lang-zh_CN.js"></script>
@@ -163,32 +164,36 @@
 			}
 			//在分页栏放操作工具
 			var pager = $('#dg').datagrid().datagrid('getPager');
+
 			pager.pagination({
 				beforePageText: '第',//页数文本框前显示的汉字 
 		        afterPageText: '页    共 {pages} 页', 
-		        displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录', 
-				buttons:[{
-					text:'修改',
-					iconCls:'icon-edit',
-					handler:function(){
-						oper.edit();
-					}
-				},{
-					text:'删除',					
-					iconCls:'icon-remove',
-					handler:function(){
-						oper.del();
-					}
-				},{
-					text:'导出',					
-					iconCls:'icon-redo',
-					handler:function(){
-						oper.exp();
-					}
-				}]
-				
-			});			
-			
+		        displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录'
+			});
+			if($("#hasButton").val() == "1"){
+				pager.pagination({
+					buttons:[{
+						text:'修改',
+						iconCls:'icon-edit',
+						handler:function(){
+							oper.edit();
+						}
+					},{
+						text:'删除',
+						iconCls:'icon-remove',
+						handler:function(){
+							oper.del();
+						}
+					},{
+						text:'导出',
+						iconCls:'icon-redo',
+						handler:function(){
+							oper.exp();
+						}
+					}]
+				})
+			}
+
 			//查询
 			$("#searchBtn").click(function(){
 				var statusList = [];
@@ -232,9 +237,9 @@
 				}
 				return name;
 			}
-		function dbclickRow(row){
+		function dbclickRow(index,row){
 			CITI.createWindow({
-				url : "${basePath}/plan/edit?planId="+row.id,
+				url : "${basePath}/plan/edit?type=read&planId="+row.id,
 				title:"计划查看",
 				height:800
 			});

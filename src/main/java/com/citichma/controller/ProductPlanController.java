@@ -9,6 +9,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.citichma.pojo.TMenuInfo;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -107,13 +108,10 @@ public class ProductPlanController {
 				if(Check.NuNObj(node.getPlanFinishTime())){
 					node.setCountDay(0l);
 				}
-				if(!Check.NuNObj(node.getPlanFinishTime()) && Check.NuNObj(node.getActualFinishTime())){
+				if(!Check.NuNObj(node.getPlanFinishTime())){
 					node.setCountDay(DateUtil.getDateIntervalNum(node.getPlanFinishTime(), new Date()));
 				}
-				
-				if(!Check.NuNObj(node.getPlanFinishTime()) && !Check.NuNObj(node.getActualFinishTime())){
-					node.setCountDay(DateUtil.getDateIntervalNum(node.getPlanFinishTime(),node.getActualFinishTime()));
-				}
+
 				if(node.getNodeType() == NodeTypeEnum.CGYJ.getCode()){
 					request.setAttribute("cgyj", node);
 				}
@@ -147,6 +145,9 @@ public class ProductPlanController {
 		request.setAttribute("detailVo", detailVo);
 		if(!Check.NuNStr(type) && "time".equals(type)){
 			return "plan/productPlanTimeEdit";
+		}
+		if (!Check.NuNStr(type) && "read".equals(type)){
+			return "plan/productPlanRead";
 		}
 		return "plan/productPlanEdit";
 	}
@@ -183,7 +184,38 @@ public class ProductPlanController {
 			TimeNode jy = nodeList.getJy();
 			TimeNode ts = nodeList.getTs();
 			TimeNode zp = nodeList.getZp();
-			
+
+			//采购节点 （原件）
+			if (!Check.NuNObj(cgyj.getActualFinishTime()) && !Check.NuNObj(productPlan.getOrderDate())){
+				cgyj.setPlanDayNum((int)DateUtil.getDateIntervalNum(cgyj.getActualFinishTime(),productPlan.getOrderDate()));
+			}
+			//采购节点（柜体）
+			if (!Check.NuNObj(cggt.getActualFinishTime()) && !Check.NuNObj(productPlan.getOrderDate())){
+				cggt.setPlanDayNum((int)DateUtil.getDateIntervalNum(cggt.getActualFinishTime(),productPlan.getOrderDate()));
+			}
+			//原件发放 - 采购节点 原件
+			if (!Check.NuNObj(yjff.getActualFinishTime()) && !Check.NuNObj(cgyj.getActualFinishTime())){
+				yjff.setPlanDayNum((int)DateUtil.getDateIntervalNum(yjff.getActualFinishTime(),cgyj.getActualFinishTime()));
+			}
+			//装配节点 - 原件发放
+			if (!Check.NuNObj(zp.getActualFinishTime()) && !Check.NuNObj(yjff.getActualFinishTime())){
+				zp.setPlanDayNum((int)DateUtil.getDateIntervalNum(zp.getActualFinishTime(),yjff.getActualFinishTime()));
+			}
+			//检验节点 - 装配节点
+			if (!Check.NuNObj(jy.getActualFinishTime()) && !Check.NuNObj(zp.getActualFinishTime())){
+				jy.setPlanDayNum((int)DateUtil.getDateIntervalNum(jy.getActualFinishTime(),zp.getActualFinishTime()));
+			}
+
+			//调试节点 - 检验节点
+			if (!Check.NuNObj(ts.getActualFinishTime()) && !Check.NuNObj(jy.getActualFinishTime())){
+				ts.setPlanDayNum((int)DateUtil.getDateIntervalNum(ts.getActualFinishTime(),jy.getActualFinishTime()));
+			}
+
+			//调试节点 - 检验节点
+			if (!Check.NuNObj(rk.getActualFinishTime()) && !Check.NuNObj(ts.getActualFinishTime())){
+				rk.setPlanDayNum((int)DateUtil.getDateIntervalNum(rk.getActualFinishTime(),ts.getActualFinishTime()));
+			}
+
 			List<TimeNode> tlist = new ArrayList<>();
 			tlist.add(cgyj);
 			tlist.add(cggt);
@@ -192,10 +224,10 @@ public class ProductPlanController {
 			tlist.add(jy);
 			tlist.add(ts);
 			tlist.add(zp);
-			
+			//循环插入数据，并返回id值
 			for(TimeNode node : tlist){
 				if(!Check.NuNObj(node)){
-					if((Check.NuNObj(node.getId()) && !Check.NuNObj(node.getPlanFinishTime()) && !Check.NuNObj(node.getPlanDayNum())) || !Check.NuNObj(node.getId())){
+					if(!Check.NuNObj(node.getId()) && !Check.NuNObj(node.getPlanFinishTime())){
 						node.setPlanId(suVo.getPlanId());
 						node.setNodeName(NodeTypeEnum.getnNodeTypeEnumByCode(node.getNodeType()).getName());
 						if(timeNodeService.saveOrUpdateTimeNode(node) > 0){
@@ -228,7 +260,7 @@ public class ProductPlanController {
 				}
 			}
 		}catch(Exception e){
-			LOGGER.error(e.getMessage());
+			LOGGER.error("保存生产计划异常",e);
 			return JSONObject.toJSONString(DataResult.build(HttpStatus.INTERNAL_SERVER_ERROR.value(), MessageConstant.SERVER_ERROR));
 		}
 		return JSONObject.toJSONString(DataResult.ok(suVo));
@@ -271,8 +303,8 @@ public class ProductPlanController {
 	 * @throws
 	 */
 	@RequestMapping("/timelist")
-	public String planList(ProductPlanParam request){
-		
+	public String planList(HttpServletRequest request){
+
 		return "plan/planTimeList";
 	}
 	/**
@@ -284,8 +316,14 @@ public class ProductPlanController {
 	 * @throws
 	 */
 	@RequestMapping("/list")
-	public String planTimeList(ProductPlanParam request){
-		
+	public String planTimeList(HttpServletRequest request){
+		UserInfoVo currentUser = UserUtil.getCurrentUser();
+		List<TMenuInfo> menuList = currentUser.getMenuList();
+		for (TMenuInfo info : menuList){
+			if ("/planlist/button".equals(info.getMenuUrl())){
+				request.setAttribute("button","1");
+			}
+		}
 		return "plan/planList";
 	}
 	/**

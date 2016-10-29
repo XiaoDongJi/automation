@@ -11,22 +11,22 @@
 			</caption>
 			<tr>
 				<td>工作令号:</td>
-				<td><input class="easyui-textbox" type="text" name="workSn" data-options="required:true" value="${detailVo.workSn }" disabled="disabled"></input></td>
+				<td><input class="easyui-textbox" type="text" name="workSn" data-options="required:true" value="${detailVo.workSn }" disabled="disabled"/></td>
 
 				<td>合同号:</td>
-				<td><input class="easyui-textbox" type="text" name="contractSn" value="${detailVo.contractSn }" disabled="disabled"></input></td>
+				<td><input class="easyui-textbox" type="text" name="contractSn" value="${detailVo.contractSn }" disabled="disabled"/></td>
 
 				<td>产品图号:</td>
-				<td><input class="easyui-textbox" type="text" name="chartSn" value="${detailVo.chartSn}" disabled="disabled"></input></td>
+				<td><input class="easyui-textbox" type="text" name="chartSn" value="${detailVo.chartSn}" disabled="disabled"/></td>
 
 				<td>产品名称及规格:</td>
-				<td><input class="easyui-textbox" type="text" name="productName" value="${detailVo.productName}" disabled="disabled"></input></td>
+				<td><input class="easyui-textbox" type="text" name="productName" value="${detailVo.productName}" disabled="disabled"/></td>
 			</tr>
 			<tr>
 				<td>数量:</td>
-				<td><input class="easyui-textbox" type="text" name="productNum" value="${detailVo.productNum}" disabled="disabled"></input></td>
+				<td><input class="easyui-textbox" type="text" name="productNum" value="${detailVo.productNum}" disabled="disabled"/></td>
 				<td>合同交货期:</td>
-				<td><input class="easyui-datebox" type="text" name="deliveryDate" disabled="disabled" value="<fmt:formatDate value="${detailVo.deliveryDate}" type="date" dateStyle="medium"/>" ></input></td>
+				<td><input class="easyui-datebox" type="text" name="deliveryDate" disabled="disabled" value="<fmt:formatDate value="${detailVo.deliveryDate}" type="date" dateStyle="medium"/>" /></td>
 
 				<td>产品种类:</td>
 				<td>
@@ -70,10 +70,10 @@
 			</tr>
 			<tr>
 				<td>用户:</td>
-				<td><input class="easyui-textbox" type="text" name="orderUser" value="${detailVo.orderUser}" disabled="disabled"></input></td>
+				<td><input class="easyui-textbox" type="text" name="orderUser" value="${detailVo.orderUser}" disabled="disabled"/></td>
 
 				<td>设计:</td>
-				<td><input class="easyui-textbox" type="text" name="designer" value="${detailVo.designer}" disabled="disabled"></input></td>
+				<td><input class="easyui-textbox" type="text" name="designer" value="${detailVo.designer}" disabled="disabled"/></td>
 
 				<td>设计部门:</td>
 				<td>
@@ -101,7 +101,7 @@
 				</td>
 
 				<td>下令日期:</td>
-				<td><input class="easyui-datebox" type="text" name="orderDate" disabled="disabled" value="<fmt:formatDate value="${detailVo.orderDate}" type="date" dateStyle="medium"/>"></input></td>
+				<td><input class="easyui-datebox" type="text" name="orderDate" disabled="disabled" value="<fmt:formatDate value="${detailVo.orderDate}" type="date" dateStyle="medium"/>"/></td>
 
 				<td>类别:</td>
 				<td>
@@ -118,7 +118,7 @@
 				</td>
 
 				<td>调整交货期:</td>
-				<td><input class="easyui-datebox" type="text" name="adjustDeliverDate" disabled="disabled" value="<fmt:formatDate value="${detailVo.adjustDeliverDate}" type="date" dateStyle="medium"/>"></input></td>
+				<td><input class="easyui-datebox" type="text" name="adjustDeliverDate" disabled="disabled" value="<fmt:formatDate value="${detailVo.adjustDeliverDate}" type="date" dateStyle="medium"/>"/></td>
 			</tr>
 			<tr>
 				<td>试车节点:</td>
@@ -134,15 +134,15 @@
 				</td>
 
 				<td>柜数:</td>
-				<td><input class="easyui-numberbox" maxlength="3" type="text" name="cupboardNum" disabled="disabled" value="${detailVo.cupboardNum}" data-options="min:0,max:1000,precision:0"></input></td></td>
+				<td><input class="easyui-numberbox" maxlength="3" type="text" name="cupboardNum" disabled="disabled" value="${detailVo.cupboardNum}" data-options="min:0,max:1000,precision:0"/></td></td>
 
 				<td>箱数:</td>
-				<td><input class="easyui-numberbox" maxlength="3" type="text" name="boxNum" disabled="disabled" value="${detailVo.boxNum}" data-options="min:0,max:1000,precision:0"></input></td></td>
+				<td><input class="easyui-numberbox" maxlength="3" type="text" name="boxNum" disabled="disabled" value="${detailVo.boxNum}" data-options="min:0,max:1000,precision:0"/></td></td>
 
 			</tr>
 			<tr>
 				<td>项目人:</td>
-				<td><input class="easyui-textbox" type="text" name="projectLeader" disabled="disabled" value="${detailVo.projectLeader}"></input></td>
+				<td><input class="easyui-textbox" type="text" name="projectLeader" disabled="disabled" value="${detailVo.projectLeader}"/></td>
 
 				<td>状态:</td>
 				<td>

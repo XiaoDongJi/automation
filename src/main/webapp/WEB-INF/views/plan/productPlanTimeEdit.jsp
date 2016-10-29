@@ -101,7 +101,7 @@
 		    			</td>
 		    			
 		    			<td>下令日期:</td>
-		    			<td><input class="easyui-datebox" type="text" name="orderDate" disabled="disabled" value="<fmt:formatDate value="${detailVo.orderDate}" type="date" dateStyle="medium"/>"></input></td>
+		    			<td><input class="easyui-datebox" type="text" name="orderDate" readonly value="<fmt:formatDate value="${detailVo.orderDate}" type="date" dateStyle="medium"/>"></input></td>
 		    			
 		    			<td>类别:</td>
 		    			<td>
@@ -189,7 +189,7 @@
 			    				<input type="hidden" id="cgyjId" name="cgyj.id" value="${cgyj.id }"/>
 			    				<input type="hidden" name="cgyj.nodeType" value="1" />
 			    				<input class="easyui-datebox" type="text" name="cgyj.planFinishTime" 
-			    					value="<fmt:formatDate value="${cgyj.planFinishTime}" type="date" dateStyle="medium"/>" disabled="disabled"/>
+			    					value="<fmt:formatDate value="${cgyj.planFinishTime}" type="date" dateStyle="medium"/>" readonly/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-numberbox" maxlength="3" type="text" name="cgyj.planDayNum"
@@ -197,7 +197,7 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="cgyj.actualFinishTime" 
-		    						value="<fmt:formatDate value="${cgyj.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/cgyj">disabled="disabled"</auth:permission> />
+		    						value="<fmt:formatDate value="${cgyj.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/cgyj">readonly</auth:permission> />
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="cgyj.nodeLeader" value="${cgyj.nodeLeader }" <auth:permission privilege="/node/cgyj">disabled="disabled"</auth:permission> ></input>
@@ -216,7 +216,7 @@
 			    				<input type="hidden" id="cggtId" name="cggt.id" value="${cggt.id }"/>
 			    				<input type="hidden" name="cggt.nodeType" value="2" />
 			    				<input class="easyui-datebox" type="text" name="cggt.planFinishTime" 
-			    					value="<fmt:formatDate value="${cggt.planFinishTime}" type="date" dateStyle="medium"/>" disabled="disabled"/>
+			    					value="<fmt:formatDate value="${cggt.planFinishTime}" type="date" dateStyle="medium"/>" readonly/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-numberbox" maxlength="3" type="text" name="cggt.planDayNum"
@@ -224,7 +224,7 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="cggt.actualFinishTime" 
-		    						value="<fmt:formatDate value="${cggt.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/cggt">disabled="disabled"</auth:permission>/>
+		    						value="<fmt:formatDate value="${cggt.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/cggt">readonly</auth:permission>/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="cggt.nodeLeader" value="${cggt.nodeLeader }" <auth:permission privilege="/node/cggt">disabled="disabled"</auth:permission>></input>
@@ -242,7 +242,7 @@
 			    				<input type="hidden" id="yjffId" name="yjff.id" value="${yjff.id }"/>
 			    				<input type="hidden" name="yjff.nodeType" value="3" />
 			    				<input class="easyui-datebox" type="text" name="yjff.planFinishTime" 
-			    					value="<fmt:formatDate value="${yjff.planFinishTime}" type="date" dateStyle="medium"/>" disabled="disabled"/>
+			    					value="<fmt:formatDate value="${yjff.planFinishTime}" type="date" dateStyle="medium"/>" readonly/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-numberbox" maxlength="3" type="text" name="yjff.planDayNum"
@@ -250,7 +250,7 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="yjff.actualFinishTime" 
-		    						value="<fmt:formatDate value="${yjff.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/yjff">disabled="disabled"</auth:permission>/>
+		    						value="<fmt:formatDate value="${yjff.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/yjff">readonly</auth:permission>/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="yjff.nodeLeader" value="${yjff.nodeLeader }" <auth:permission privilege="/node/yjff">disabled="disabled"</auth:permission> />
@@ -269,7 +269,7 @@
 			    				<input type="hidden" id="zpId" name="zp.id" value="${zp.id }"/>
 			    				<input type="hidden" name="zp.nodeType" value="4" />
 			    				<input class="easyui-datebox" type="text" name="zp.planFinishTime" 
-			    					value="<fmt:formatDate value="${zp.planFinishTime}" type="date" dateStyle="medium"/>" disabled="disabled"/>
+			    					value="<fmt:formatDate value="${zp.planFinishTime}" type="date" dateStyle="medium"/>" readonly/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-numberbox" maxlength="3" type="text" name="zp.planDayNum"
@@ -277,10 +277,10 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="zp.actualFinishTime" 
-		    						value="<fmt:formatDate value="${zp.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/zp">disabled="disabled"</auth:permission>/>
+		    						value="<fmt:formatDate value="${zp.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/zp">readonly</auth:permission>/>
 		    				</td>
 		    				<td>
-		    					<input class="easyui-textbox" type="text" name="zp.nodeLeader" value="${zp.nodeLeader }" <auth:permission privilege="/node/zp">disabled="disabled"</auth:permission>></input>
+		    					<input class="easyui-textbox" type="text" name="zp.nodeLeader" value="${zp.nodeLeader }" <auth:permission privilege="/node/zp">disabled="disabled"</auth:permission>/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-numberbox" type="text" value="${zp.countDay }" disabled="disabled"/>
@@ -296,7 +296,7 @@
 			    				<input type="hidden" id="jyId" name="jy.id" value="${jy.id }"/>
 			    				<input type="hidden" name="jy.nodeType" value="5" />
 			    				<input class="easyui-datebox" type="text" name="jy.planFinishTime" 
-			    					value="<fmt:formatDate value="${jy.planFinishTime}" type="date" dateStyle="medium"/>" disabled="disabled"/>
+			    					value="<fmt:formatDate value="${jy.planFinishTime}" type="date" dateStyle="medium"/>" readonly/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-numberbox" maxlength="3" type="text" name="jy.planDayNum"
@@ -304,7 +304,7 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="jy.actualFinishTime" 
-		    						value="<fmt:formatDate value="${jy.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/jy">disabled="disabled"</auth:permission> />
+		    						value="<fmt:formatDate value="${jy.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/jy">readonly</auth:permission> />
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="jy.nodeLeader" value="${jy.nodeLeader }" <auth:permission privilege="/node/jy">disabled="disabled"</auth:permission> />
@@ -323,7 +323,7 @@
 			    				<input type="hidden" id="tsId" name="ts.id" value="${ts.id }"/>
 			    				<input type="hidden" name="ts.nodeType" value="6" />
 			    				<input class="easyui-datebox" type="text" name="ts.planFinishTime" 
-			    					value="<fmt:formatDate value="${ts.planFinishTime}" type="date" dateStyle="medium"/>" disabled="disabled"/>
+			    					value="<fmt:formatDate value="${ts.planFinishTime}" type="date" dateStyle="medium"/>" readonly/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-numberbox" maxlength="3" type="text" name="ts.planDayNum"
@@ -331,7 +331,7 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="ts.actualFinishTime" 
-		    						value="<fmt:formatDate value="${ts.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/ts">disabled="disabled"</auth:permission> />
+		    						value="<fmt:formatDate value="${ts.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/ts">readonly</auth:permission> />
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="ts.nodeLeader" value="${ts.nodeLeader }" <auth:permission privilege="/node/ts">disabled="disabled"</auth:permission>></input>
@@ -350,7 +350,7 @@
 			    				<input type="hidden" id=rkId name="rk.id" value="${rk.id }"/>
 			    				<input type="hidden" name="rk.nodeType" value="7" />
 			    				<input class="easyui-datebox" type="text" name="rk.planFinishTime" 
-			    					value="<fmt:formatDate value="${rk.planFinishTime}" type="date" dateStyle="medium"/>" disabled="disabled"/>
+			    					value="<fmt:formatDate value="${rk.planFinishTime}" type="date" dateStyle="medium"/>" readonly/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-numberbox" maxlength="3" type="text" name="rk.planDayNum"
@@ -358,7 +358,7 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="rk.actualFinishTime" 
-		    						value="<fmt:formatDate value="${rk.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/rk">disabled="disabled"</auth:permission> />
+		    						value="<fmt:formatDate value="${rk.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/rk">readonly</auth:permission> />
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="rk.nodeLeader" value="${rk.nodeLeader }" <auth:permission privilege="/node/rk">disabled="disabled"</auth:permission>/>
