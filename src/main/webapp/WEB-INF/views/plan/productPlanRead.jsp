@@ -206,7 +206,7 @@
 					<input class="easyui-numberbox" type="text" value="${cgyj.countDay }" disabled="disabled"/>
 				</td>
 				<td>
-					<input class="easyui-textbox" type="text" name="cgyj.remark" value="${cgyj.remark }" data-options="multiline:true" style="height:50px;width: 100%;"/>
+					<input class="easyui-textbox" type="text" name="cgyj.remark" value="${cgyj.remark }" disabled data-options="multiline:true" style="height:50px;width: 100%;"/>
 				</td>
 			</tr>
 
@@ -233,7 +233,7 @@
 					<input class="easyui-numberbox" type="text" value="${cggt.countDay }" disabled="disabled"/>
 				</td>
 				<td>
-					<input class="easyui-textbox" type="text" name="cggt.remark" value="${cggt.remark }" data-options="multiline:true" style="height:50px;width: 100%;"/>
+					<input class="easyui-textbox" type="text" name="cggt.remark" value="${cggt.remark }" disabled data-options="multiline:true" style="height:50px;width: 100%;"/>
 				</td>
 			</tr>
 			<tr>
@@ -259,7 +259,7 @@
 					<input class="easyui-numberbox" type="text" value="${yjff.countDay }" disabled="disabled"/>
 				</td>
 				<td>
-					<input class="easyui-textbox" type="text" name="yjff.remark" value="${yjff.remark }" data-options="multiline:true" style="height:50px;width: 100%;"/>
+					<input class="easyui-textbox" type="text" name="yjff.remark" value="${yjff.remark }" disabled data-options="multiline:true" style="height:50px;width: 100%;"/>
 				</td>
 			</tr>
 
@@ -286,7 +286,7 @@
 					<input class="easyui-numberbox" type="text" value="${zp.countDay }" disabled="disabled"/>
 				</td>
 				<td>
-					<input class="easyui-textbox" type="text" name="zp.remark" value="${zp.remark }" data-options="multiline:true" style="height:50px;width: 100%;"/>
+					<input class="easyui-textbox" type="text" name="zp.remark" value="${zp.remark }" disabled data-options="multiline:true" style="height:50px;width: 100%;"/>
 				</td>
 			</tr>
 
@@ -313,7 +313,7 @@
 					<input class="easyui-numberbox" type="text" value="${jy.countDay }" disabled="disabled"/>
 				</td>
 				<td>
-					<input class="easyui-textbox" type="text" name="jy.remark" value="${jy.remark }" data-options="multiline:true" style="height:50px;width: 100%;"/>
+					<input class="easyui-textbox" type="text" name="jy.remark" value="${jy.remark }" disabled data-options="multiline:true" style="height:50px;width: 100%;"/>
 				</td>
 			</tr>
 
@@ -340,7 +340,7 @@
 					<input class="easyui-numberbox" type="text" value="${ts.countDay }" disabled="disabled"/>
 				</td>
 				<td>
-					<input class="easyui-textbox" type="text" name="ts.remark" value="${ts.remark }" data-options="multiline:true" style="height:50px;width: 100%;"/>
+					<input class="easyui-textbox" type="text" name="ts.remark" value="${ts.remark }" disabled data-options="multiline:true" style="height:50px;width: 100%;"/>
 				</td>
 			</tr>
 
@@ -367,7 +367,7 @@
 					<input class="easyui-numberbox" type="text" value="${rk.countDay }" disabled="disabled"/>
 				</td>
 				<td>
-					<input class="easyui-textbox" type="text" name="rk.remark" value="${rk.remark }" data-options="multiline:true" style="height:50px;width: 100%;"/>
+					<input class="easyui-textbox" type="text" name="rk.remark" value="${rk.remark }" disabled data-options="multiline:true" style="height:50px;width: 100%;"/>
 				</td>
 			</tr>
 			<tr>
