@@ -227,7 +227,7 @@ public class ProductPlanController {
 			//循环插入数据，并返回id值
 			for(TimeNode node : tlist){
 				if(!Check.NuNObj(node)){
-					if(!Check.NuNObj(node.getId()) && !Check.NuNObj(node.getPlanFinishTime())){
+					if(!Check.NuNObj(node.getPlanFinishTime())){
 						node.setPlanId(suVo.getPlanId());
 						node.setNodeName(NodeTypeEnum.getnNodeTypeEnumByCode(node.getNodeType()).getName());
 						if(timeNodeService.saveOrUpdateTimeNode(node) > 0){
