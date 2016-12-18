@@ -71,7 +71,7 @@
 															return;
 														}
 														return new Date(value).format('yyyy-MM-dd');
-													}">下令日期</th>
+													},sortable:true,">下令日期</th>
 					<th data-options="field:'adjustDeliverDate',width:'8%',
 											formatter:function(value,row){
 														if(value == null){

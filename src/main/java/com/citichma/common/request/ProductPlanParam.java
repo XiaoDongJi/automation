@@ -112,6 +112,10 @@ public class ProductPlanParam extends BasePage{
     @DateTimeFormat(pattern="yyyy-MM-dd") 
     private Date endadjustDeliverDate;
 
+	private List<String> sort;
+
+	private List<String> order;
+
 	public String getWorkSn() {
 		return workSn;
 	}
@@ -310,5 +314,20 @@ public class ProductPlanParam extends BasePage{
 	public void setProjectStatusList(String projectStatusList) {
 		this.projectStatusList = projectStatusList;
 	}
-	
+
+	public List<String> getSort() {
+		return sort;
+	}
+
+	public void setSort(List<String> sort) {
+		this.sort = sort;
+	}
+
+	public List<String> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<String> order) {
+		this.order = order;
+	}
 }

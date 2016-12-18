@@ -71,6 +71,7 @@ public class ProductPlanServiceImpl implements ProductPlanService {
 		if(!Check.NuNStr(request.getProjectLeader())){
 			criteria.andProjectLeaderLike("%"+request.getProjectLeader()+"%");
 		}
+
 		/*if(!Check.NuNObj(request.getProjectStatus())){
 			criteria.andProjectStatusEqualTo(request.getProjectStatus());
 		}*/
@@ -83,8 +84,29 @@ public class ProductPlanServiceImpl implements ProductPlanService {
 		if(!Check.NuNStr(request.getChartSn())){
 			criteria.andChartSnLike("%"+request.getChartSn()+"%");
 		}
-		
-		planExample.setOrderByClause("last_modify_time desc");
+
+		List<String> sortList = request.getSort();
+		StringBuffer sb = new StringBuffer();
+		if (!Check.NuNCollection(sortList)){
+			List<String> orderList = request.getOrder();
+			for (int i = 0;i<sortList.size();i++){
+				String s = sortList.get(i);
+				if (i!=0){
+					sb.append(",");
+				}
+				if (s.contains("order")){
+					sb.append("order_date ");
+				}
+				if (s.contains("adjust")){
+					sb.append("adjust_deliver_date");
+				}
+				sb.append(orderList.get(i));
+			}
+		}
+		if (Check.NuNStr(sb.toString())){
+			sb.append("adjust_deliver_date desc");
+		}
+		planExample.setOrderByClause(sb.toString());
 		PageHelper.startPage(request.getPage(), request.getRows());
 		List<ProductPlan> planList = productPlanMapper.selectByExample(planExample);
 		List<ProductPlanItemVo> voList = new ArrayList<>();
