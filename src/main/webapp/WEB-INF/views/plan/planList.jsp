@@ -71,14 +71,14 @@
 															return;
 														}
 														return new Date(value).format('yyyy-MM-dd');
-													},sortable:true">下令日期</th>
+													},sortable:true,">下令日期</th>
 					<th data-options="field:'adjustDeliverDate',width:'8%',
 											formatter:function(value,row){
 														if(value == null){
 															return;
 														}
 														return new Date(value).format('yyyy-MM-dd');
-													},align:'center',sortable:true">调整交货期</th>
+													},align:'center',sortable:true,">调整交货期</th>
 					<th data-options="field:'rkDate',align:'center',width:'5%',
 										formatter:function(value,row){
 														if(value == null){

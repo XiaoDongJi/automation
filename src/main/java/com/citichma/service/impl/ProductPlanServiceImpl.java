@@ -98,7 +98,7 @@ public class ProductPlanServiceImpl implements ProductPlanService {
 					sb.append("order_date ");
 				}
 				if (s.contains("adjust")){
-					sb.append("adjust_deliver_date");
+					sb.append("adjust_deliver_date ");
 				}
 				sb.append(orderList.get(i));
 			}
