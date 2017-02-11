@@ -149,7 +149,8 @@ public class ProductPlan {
     /**
      * 发货报告
      */
-    private String deliveryReport;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date deliveryReport;
     /**
      * 备注1
      */
@@ -400,14 +401,14 @@ public class ProductPlan {
         this.outDate = outDate;
     }
 
-    public String getDeliveryReport() {
+    public Date getDeliveryReport() {
         return deliveryReport;
     }
 
-    public void setDeliveryReport(String deliveryReport) {
-        this.deliveryReport = deliveryReport == null ? null : deliveryReport.trim();
+    public void setDeliveryReport(Date deliveryReport) {
+        this.deliveryReport = deliveryReport;
     }
-    
+
     public String getRemark1() {
 		return remark1;
 	}

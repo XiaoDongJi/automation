@@ -108,8 +108,13 @@ public class ProductPlanController {
 				if(Check.NuNObj(node.getPlanFinishTime())){
 					node.setCountDay(0l);
 				}
-				if(!Check.NuNObj(node.getPlanFinishTime())){
+				if(!Check.NuNObj(node.getPlanFinishTime()) && Check.NuNObj(node.getActualFinishTime())){
 					node.setCountDay(DateUtil.getDateIntervalNum(node.getPlanFinishTime(), new Date()));
+
+				}
+
+				if (!Check.NuNObj(node.getActualFinishTime()) && DateUtil.isExpired(node.getLastModifyTime(),1)){
+					node.setIsDel(1);
 				}
 
 				if(node.getNodeType() == NodeTypeEnum.CGYJ.getCode()){

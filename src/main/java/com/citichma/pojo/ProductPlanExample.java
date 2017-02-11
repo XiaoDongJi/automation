@@ -1828,62 +1828,62 @@ public class ProductPlanExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportEqualTo(String value) {
+        public Criteria andDeliveryReportEqualTo(Date value) {
             addCriterion("delivery_report =", value, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportNotEqualTo(String value) {
+        public Criteria andDeliveryReportNotEqualTo(Date value) {
             addCriterion("delivery_report <>", value, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportGreaterThan(String value) {
+        public Criteria andDeliveryReportGreaterThan(Date value) {
             addCriterion("delivery_report >", value, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportGreaterThanOrEqualTo(String value) {
+        public Criteria andDeliveryReportGreaterThanOrEqualTo(Date value) {
             addCriterion("delivery_report >=", value, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportLessThan(String value) {
+        public Criteria andDeliveryReportLessThan(Date value) {
             addCriterion("delivery_report <", value, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportLessThanOrEqualTo(String value) {
+        public Criteria andDeliveryReportLessThanOrEqualTo(Date value) {
             addCriterion("delivery_report <=", value, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportLike(String value) {
+        public Criteria andDeliveryReportLike(Date value) {
             addCriterion("delivery_report like", value, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportNotLike(String value) {
+        public Criteria andDeliveryReportNotLike(Date value) {
             addCriterion("delivery_report not like", value, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportIn(List<String> values) {
+        public Criteria andDeliveryReportIn(List<Date> values) {
             addCriterion("delivery_report in", values, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportNotIn(List<String> values) {
+        public Criteria andDeliveryReportNotIn(List<Date> values) {
             addCriterion("delivery_report not in", values, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportBetween(String value1, String value2) {
+        public Criteria andDeliveryReportBetween(Date value1, Date value2) {
             addCriterion("delivery_report between", value1, value2, "deliveryReport");
             return (Criteria) this;
         }
 
-        public Criteria andDeliveryReportNotBetween(String value1, String value2) {
+        public Criteria andDeliveryReportNotBetween(Date value1, Date value2) {
             addCriterion("delivery_report not between", value1, value2, "deliveryReport");
             return (Criteria) this;
         }

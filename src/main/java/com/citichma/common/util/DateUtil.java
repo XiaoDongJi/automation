@@ -1,6 +1,7 @@
 package com.citichma.common.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -32,5 +33,13 @@ public class DateUtil {
 		}
 		SimpleDateFormat myFmt=new SimpleDateFormat(DATE_FORMATE_SHORT);
 		return myFmt.format(date);
+	}
+
+	public static boolean isExpired(Date finishDate,int num){
+		Calendar calendar = Calendar.getInstance();
+		Date currentTime = calendar.getTime();
+		calendar.setTime(finishDate);
+		calendar.set(Calendar.DAY_OF_MONTH,num);
+		return currentTime.before(calendar.getTime());
 	}
 }

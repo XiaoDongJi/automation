@@ -127,9 +127,11 @@
 				<td>重要程度:</td>
 				<td>
 					<select class="easyui-combobox" id="importanceDegree" name="importanceDegree" disabled="disabled">
-						<option value="1">A</option>
-						<option value="2">B</option>
-						<option value="3">C</option>
+						<option value="">--</option>
+						<option value="1">A+</option>
+						<option value="2">A</option>
+						<option value="3">B</option>
+						<option value="4">C</option>
 					</select>
 				</td>
 
@@ -393,19 +395,24 @@
 			<tr>
 				<td>出库时间</td>
 				<td><input class="easyui-datebox" type="text" name="outDate" value="<fmt:formatDate value="${detailVo.outDate }" type="date" dateStyle="medium"/>" disabled="disabled" /></td>
+				<td></td>
 				<td>直发件数量</td>
 				<td><input type="text" class="easyui-numberbox" name="zfjNum" value="${detailVo.zfjNum }" disabled="disabled"/></td>
-
+				<td></td>
 				<td>直发件已完成数量</td>
 				<td><input type="text" class="easyui-numberbox" name="zfjFinishNum" value="${detailVo.zfjFinishNum }" disabled="disabled"/></td>
-
-				<td>直发件最终完成日期</td>
-				<td><input class="easyui-datebox" type="text" name="zfjFinishDate" value="<fmt:formatDate value="${detailVo.zfjFinishDate }" type="date" dateStyle="medium"/>" disabled="disabled" /></td>
 				<td></td>
 			</tr>
 			<tr>
+				<td>直发件最终完成日期</td>
+				<td><input class="easyui-datebox" type="text" name="zfjFinishDate" value="<fmt:formatDate value="${detailVo.zfjFinishDate }" type="date" dateStyle="medium"/>" disabled="disabled" /></td>
+				<td></td>
 				<td>发货报告</td>
-				<td colspan="2"><input class="easyui-textbox" name="deliveryReport" data-options="multiline:true" style="height: 100px;width: 80%;" value="${detailVo.deliveryReport }" disabled="disabled" /></td>
+				<td><input class="easyui-datebox" type="text" name="deliveryReport" value="<fmt:formatDate value="${detailVo.deliveryReport }" type="date" dateStyle="medium"/>" disabled="disabled" /></td>
+				<td></td>
+
+			</tr>
+			<tr>
 
 				<td>详细进度1</td>
 				<td colspan="2">
@@ -415,10 +422,10 @@
 				<td colspan="2">
 					<input class="easyui-textbox" name="remark2" data-options="multiline:true" style="height:100px;width: 80%;" value="${detailVo.remark2 }" disabled="disabled" />
 				</td>
-			</tr>
-			<tr>
 				<td>详情进度3</td>
 				<td colspan="2"><input class="easyui-textbox" name="remark3" data-options="multiline:true" style="height:100px;width: 80%;" value="${detailVo.remark3 }" disabled="disabled" /></td>
+			</tr>
+			<tr>
 				<td>详细进度4</td>
 				<td colspan="2">
 					<input class="easyui-textbox" name="remark4" data-options="multiline:true" style="height:100px;width: 80%;" value="${detailVo.remark4 }" disabled="disabled" />

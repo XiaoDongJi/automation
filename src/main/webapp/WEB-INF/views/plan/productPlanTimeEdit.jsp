@@ -127,9 +127,11 @@
 		    			<td>重要程度:</td>
 		    			<td>
 		    				<select class="easyui-combobox" id="importanceDegree" name="importanceDegree" disabled="disabled">
-	    						<option value="1">A</option>
-	    						<option value="2">B</option>
-	    						<option value="3">C</option>
+								<option value="">--</option>
+								<option value="1">A+</option>
+								<option value="2">A</option>
+								<option value="3">B</option>
+								<option value="4">C</option>
 	    					</select>
 		    			</td>
 		    			
@@ -197,7 +199,9 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="cgyj.actualFinishTime" 
-		    						value="<fmt:formatDate value="${cgyj.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/cgyj">readonly</auth:permission> />
+		    						value="<fmt:formatDate value="${cgyj.actualFinishTime}" type="date" dateStyle="medium"/>"
+									   <c:if test="${cgyj.isDel == 1}">readonly</c:if>
+									   <auth:permission privilege="/node/cgyj">readonly</auth:permission> />
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="cgyj.nodeLeader" value="${cgyj.nodeLeader }" <auth:permission privilege="/node/cgyj">disabled="disabled"</auth:permission> ></input>
@@ -224,7 +228,9 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="cggt.actualFinishTime" 
-		    						value="<fmt:formatDate value="${cggt.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/cggt">readonly</auth:permission>/>
+		    						value="<fmt:formatDate value="${cggt.actualFinishTime}" type="date" dateStyle="medium"/>"
+									   <c:if test="${cggt.isDel == 1}">readonly</c:if>
+									   <auth:permission privilege="/node/cggt">readonly</auth:permission>/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="cggt.nodeLeader" value="${cggt.nodeLeader }" <auth:permission privilege="/node/cggt">disabled="disabled"</auth:permission>></input>
@@ -250,7 +256,9 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="yjff.actualFinishTime" 
-		    						value="<fmt:formatDate value="${yjff.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/yjff">readonly</auth:permission>/>
+		    						value="<fmt:formatDate value="${yjff.actualFinishTime}" type="date" dateStyle="medium"/>"
+									   <c:if test="${yjff.isDel == 1}">readonly</c:if>
+									   <auth:permission privilege="/node/yjff">readonly</auth:permission>/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="yjff.nodeLeader" value="${yjff.nodeLeader }" <auth:permission privilege="/node/yjff">disabled="disabled"</auth:permission> />
@@ -277,7 +285,9 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="zp.actualFinishTime" 
-		    						value="<fmt:formatDate value="${zp.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/zp">readonly</auth:permission>/>
+		    						value="<fmt:formatDate value="${zp.actualFinishTime}" type="date" dateStyle="medium"/>"
+									   <c:if test="${zp.isDel == 1}">readonly</c:if>
+									   <auth:permission privilege="/node/zp">readonly</auth:permission>/>
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="zp.nodeLeader" value="${zp.nodeLeader }" <auth:permission privilege="/node/zp">disabled="disabled"</auth:permission>/>
@@ -304,7 +314,9 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="jy.actualFinishTime" 
-		    						value="<fmt:formatDate value="${jy.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/jy">readonly</auth:permission> />
+		    						value="<fmt:formatDate value="${jy.actualFinishTime}" type="date" dateStyle="medium"/>"
+									   <c:if test="${jy.isDel == 1}">readonly</c:if>
+									   <auth:permission privilege="/node/jy">readonly</auth:permission> />
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="jy.nodeLeader" value="${jy.nodeLeader }" <auth:permission privilege="/node/jy">disabled="disabled"</auth:permission> />
@@ -331,7 +343,9 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="ts.actualFinishTime" 
-		    						value="<fmt:formatDate value="${ts.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/ts">readonly</auth:permission> />
+		    						value="<fmt:formatDate value="${ts.actualFinishTime}" type="date" dateStyle="medium"/>"
+									   <c:if test="${ts.isDel == 1}">readonly</c:if>
+									   <auth:permission privilege="/node/ts">readonly</auth:permission> />
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="ts.nodeLeader" value="${ts.nodeLeader }" <auth:permission privilege="/node/ts">disabled="disabled"</auth:permission>></input>
@@ -358,7 +372,9 @@
 		    				</td>
 		    				<td>
 		    					<input class="easyui-datebox" type="text" name="rk.actualFinishTime" 
-		    						value="<fmt:formatDate value="${rk.actualFinishTime}" type="date" dateStyle="medium"/>" <auth:permission privilege="/node/rk">readonly</auth:permission> />
+		    						value="<fmt:formatDate value="${rk.actualFinishTime}" type="date" dateStyle="medium"/>"
+									   <c:if test="${rk.isDel == 1}">readonly</c:if>
+									   <auth:permission privilege="/node/rk">readonly</auth:permission> />
 		    				</td>
 		    				<td>
 		    					<input class="easyui-textbox" type="text" name="rk.nodeLeader" value="${rk.nodeLeader }" <auth:permission privilege="/node/rk">disabled="disabled"</auth:permission>/>
@@ -402,11 +418,12 @@
 	    				<td>直发件最终完成日期</td>
 	    				<td><input class="easyui-datebox" type="text" name="zfjFinishDate" value="<fmt:formatDate value="${detailVo.zfjFinishDate }" type="date" dateStyle="medium"/>" disabled="disabled" /></td>
 	    				<td></td>
+						<td>发货报告</td>
+						<td><input class="easyui-datebox" type="text" name="deliveryReport" value="<fmt:formatDate value="${detailVo.deliveryReport }" type="date" dateStyle="medium"/>" disabled="disabled" /></td>
+						<td></td>
 	    			</tr>
 	    			<tr>
-	    				<td>发货报告</td>
-	    				<td colspan="2"><input class="easyui-textbox" name="deliveryReport" data-options="multiline:true" style="height: 100px;width: 80%;" value="${detailVo.deliveryReport }" disabled="disabled" /></td>
-	    				
+
 	    				<td>详细进度1</td>
 	    				<td colspan="2">
 	    					<input class="easyui-textbox" name="remark1" data-options="multiline:true" style="height:100px;width: 80%;" value="${detailVo.remark1 }" disabled="disabled" />
@@ -415,10 +432,10 @@
 	    				<td colspan="2">
 	    					<input class="easyui-textbox" name="remark2" data-options="multiline:true" style="height:100px;width: 80%;" value="${detailVo.remark2 }" disabled="disabled" />
 	    				</td>
-	    			</tr>
-	    			<tr>
 	    				<td>详情进度3</td>
 	    				<td colspan="2"><input class="easyui-textbox" name="remark3" data-options="multiline:true" style="height:100px;width: 80%;" value="${detailVo.remark3 }" disabled="disabled" /></td>
+	    			</tr>
+	    			<tr>
 	    				<td>详细进度4</td>
 	    				<td colspan="2">
 	    					<input class="easyui-textbox" name="remark4" data-options="multiline:true" style="height:100px;width: 80%;" value="${detailVo.remark4 }" disabled="disabled" />

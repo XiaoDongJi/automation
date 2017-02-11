@@ -29,7 +29,7 @@
     <result column="zfj_finish_num" property="zfjFinishNum" jdbcType="INTEGER" />
     <result column="zfj_num" property="zfjNum" jdbcType="INTEGER" />
     <result column="out_date" property="outDate" jdbcType="TIMESTAMP" />
-    <result column="delivery_report" property="deliveryReport" jdbcType="VARCHAR" />
+    <result column="delivery_report" property="deliveryReport" jdbcType="TIMESTAMP" />
     <result column="remark1" property="remark1" jdbcType="VARCHAR" />
     <result column="remark2" property="remark2" jdbcType="VARCHAR" />
     <result column="remark3" property="remark3" jdbcType="VARCHAR" />
@@ -205,7 +205,7 @@
       #{orderType,jdbcType=TINYINT}, #{importanceDegree,jdbcType=INTEGER}, #{cupboardNum,jdbcType=INTEGER}, 
       #{boxNum,jdbcType=INTEGER}, #{projectStatus,jdbcType=TINYINT}, #{zfjFinishDate,jdbcType=TIMESTAMP}, 
       #{zfjFinishNum,jdbcType=INTEGER}, #{zfjNum,jdbcType=INTEGER}, #{outDate,jdbcType=TIMESTAMP}, 
-      #{deliveryReport,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{deliveryReport,jdbcType=TIMESTAMP}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR},
       #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
       #{createId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, 
       #{modifyId,jdbcType=INTEGER}, #{isDel,jdbcType=INTEGER})
@@ -414,7 +414,7 @@
         #{outDate,jdbcType=TIMESTAMP},
       </if>
       <if test="deliveryReport != null" >
-        #{deliveryReport,jdbcType=VARCHAR},
+        #{deliveryReport,jdbcType=TIMESTAMP},
       </if>
       <if test="remark1 != null" >
         #{remark1,jdbcType=VARCHAR},
@@ -539,7 +539,7 @@
         out_date = #{record.outDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.deliveryReport != null" >
-        delivery_report = #{record.deliveryReport,jdbcType=VARCHAR},
+        delivery_report = #{record.deliveryReport,jdbcType=TIMESTAMP},
       </if>
       <if test="record.remark1 != null" >
         remark1 = #{record.remark1,jdbcType=VARCHAR},
@@ -605,7 +605,7 @@
       zfj_finish_num = #{record.zfjFinishNum,jdbcType=INTEGER},
       zfj_num = #{record.zfjNum,jdbcType=INTEGER},
       out_date = #{record.outDate,jdbcType=TIMESTAMP},
-      delivery_report = #{record.deliveryReport,jdbcType=VARCHAR},
+      delivery_report = #{record.deliveryReport,jdbcType=TIMESTAMP},
       remark1 = #{record.remark1,jdbcType=VARCHAR},
       remark2 = #{record.remark2,jdbcType=VARCHAR},
       remark3 = #{record.remark3,jdbcType=VARCHAR},
@@ -702,7 +702,7 @@
         out_date = #{outDate,jdbcType=TIMESTAMP},
       </if>
       <if test="deliveryReport != null" >
-        delivery_report = #{deliveryReport,jdbcType=VARCHAR},
+        delivery_report = #{deliveryReport,jdbcType=TIMESTAMP},
       </if>
       <if test="remark1 != null" >
         remark1 = #{remark1,jdbcType=VARCHAR},
@@ -765,7 +765,7 @@
       zfj_finish_num = #{zfjFinishNum,jdbcType=INTEGER},
       zfj_num = #{zfjNum,jdbcType=INTEGER},
       out_date = #{outDate,jdbcType=TIMESTAMP},
-      delivery_report = #{deliveryReport,jdbcType=VARCHAR},
+      delivery_report = #{deliveryReport,jdbcType=TIMESTAMP},
       remark1 = #{remark1,jdbcType=VARCHAR},
       remark2 = #{remark2,jdbcType=VARCHAR},
       remark3 = #{remark3,jdbcType=VARCHAR},
