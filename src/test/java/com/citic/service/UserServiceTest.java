@@ -40,6 +40,7 @@ public class UserServiceTest extends BaseTest{
 	public void testgetUserList(){
 		/*EUDataGridResult list = userService.findUserByPage(1,10);
 		System.out.println(JSONObject.toJSONString(list));*/
+
 	}
 	
 	@Test
